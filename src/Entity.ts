@@ -6,6 +6,15 @@ export type Gene = 0 | 1;
 export type Chromosome = Gene; // 염색체
 export type HomoChrosomes = [Gene, Gene]; // 상동염색체
 
+export const lables = [
+  ["A", "a"],
+  ["B", "b"],
+  ["D", "d"],
+  ["E", "e"],
+  ["F", "f"],
+  ["Y", "X"],
+];
+
 export class Entity {
   public genome: HomoChrosomes[]; // 유전체
 
@@ -32,15 +41,6 @@ export class Entity {
 
   // 보기 편하게 정리해주는 함수
   public show() {
-    const lables = [
-      ["A", "a"],
-      ["B", "b"],
-      ["D", "d"],
-      ["E", "e"],
-      ["F", "f"],
-      ["Y", "X"],
-    ];
-
     let result = "";
 
     this.genome.forEach((g, i) => {
