@@ -47,14 +47,15 @@ console.log(
 );
 
 for (let i = 0; i < 5; i++) {
-  console.log(
-    lables[i][0] +
-      "우성 비율 : " +
-      Math.round(
-        (entities.map((v) => v.genome[i].includes(0)).filter((v) => v).length /
-          entities.length) *
-          100
-      ) /
+  const sup =
+    Math.round(
+      (entities.map((v) => v.genome[i].includes(0)).filter((v) => v).length /
+        entities.length) *
         100
+    ) / 10;
+  const inf = Math.round((1 - sup / 10) * 100) / 10;
+
+  console.log(
+    lables[i][0] + lables[i][1] + "\t우성: 열성 = " + sup + " : " + inf
   );
 }

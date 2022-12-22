@@ -3,7 +3,7 @@
 // 1 : X, 0 : Y
 // 1*1 : XX(여), 1*0, 0*1 : XY(남), YY (고려X)
 export type Gene = 0 | 1;
-export type Chromosome = Gene; // 염색체
+export type Chromosome = Gene; // 염색 분체
 export type HomoChrosomes = [Gene, Gene]; // 상동염색체
 
 export const lables = [
@@ -63,7 +63,6 @@ export class Entity {
 // 두 생색세포가 만나 번식
 export const reproduce = (ch1: Gene[], ch2: Gene[]): Entity => {
   const entity = new Entity(false); // 더미 개체 생성
-
   entity.genome = ch1.map((c, i) => [c, ch2[i]]); // 두 염색분체의 정보 합치기
 
   return entity;
