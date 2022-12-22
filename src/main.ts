@@ -33,6 +33,7 @@ for (let i = 0; i < 10; i++) {
   entities = [...entities, ...babies]; // 개체군에 합류
 }
 
+// 최종 결과
 console.log();
 console.log();
 console.log("최종 개체수 : " + entities.length);
