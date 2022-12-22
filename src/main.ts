@@ -1,4 +1,4 @@
-import { Entity, lables, reproduce } from "./Entity";
+import { Entity, lables, randomReproduce, reproduce } from "./Entity";
 
 const dad = new Entity(true); // 남
 const mom = new Entity(false); // 여
@@ -35,7 +35,53 @@ for (let i = 0; i < 10; i++) {
 
 // 최종 결과
 console.log();
+console.log("결과(근친혼)");
+console.log("최종 개체수 : " + entities.length);
+console.log(
+  "성비(남/여) = " +
+    Math.round(
+      (entities.filter((e) => e.genome[5].includes(0)).length /
+        entities.filter((e) => !e.genome[5].includes(0)).length) *
+        100
+    ) /
+      100
+);
+
+for (let i = 0; i < 5; i++) {
+  const sup =
+    Math.round(
+      (entities.map((v) => v.genome[i].includes(0)).filter((v) => v).length /
+        entities.length) *
+        100
+    ) / 10;
+  const inf = Math.round((1 - sup / 10) * 100) / 10;
+
+  console.log(
+    lables[i][0] + lables[i][1] + "\t우성: 열성 = " + sup + " : " + inf
+  );
+}
+
+//###########################################################
+
+entities = [dad, mom];
+
+for (let i = 0; i < 10; i++) {
+  // 10 번 반복
+  // n번째 반복 => 2 ^ (n-1) 번 번식
+  const babies: Entity[] = []; // 새로 태어날 아기들
+  for (let j = 0; j < Math.pow(2, i); j++) {
+    const ent = entities.sort((v) => Math.random() - 0.5)[0];
+    const ch = ent.getReprodCell();
+
+    babies.push(randomReproduce(ch, ent.genome[5].includes(0)));
+  }
+
+  entities = [...entities, ...babies]; // 개체군에 합류
+}
+
+// 최종 결과
 console.log();
+console.log("결과(근친혼X)");
 console.log("최종 개체수 : " + entities.length);
 console.log(
   "성비(남/여) = " +

@@ -15,13 +15,13 @@ export const lables = [
   ["Y", "X"],
 ];
 
+/// 랜덤한 0, 1을 반환
+const getRandomGene = (): Gene => {
+  return Math.floor(Math.random() * 2) as Gene;
+};
+
 export class Entity {
   public genome: HomoChrosomes[]; // 유전체
-
-  /// 랜덤한 0, 1을 반환
-  protected getRandomGene(): Gene {
-    return Math.floor(Math.random() * 2) as Gene;
-  }
 
   // 상염색체 5개 + 성염색체 (2n = 6) 염색체 생성
   // male: 수컷인가? (True or False)
@@ -31,7 +31,7 @@ export class Entity {
     // 5번 반복
     for (let i = 0; i < 5; i++) {
       // 랜덤하게 상동염색체 삽입
-      this.genome.push([this.getRandomGene(), this.getRandomGene()]);
+      this.genome.push([getRandomGene(), getRandomGene()]);
     }
 
     // 성염색체 X 하나는 필수
@@ -56,12 +56,26 @@ export class Entity {
 
   // 생식세포 생성
   public getReprodCell() {
-    return this.genome.map((g) => g[this.getRandomGene()]);
+    return this.genome.map((g) => g[getRandomGene()]);
   }
 }
 
 // 두 생색세포가 만나 번식
 export const reproduce = (ch1: Gene[], ch2: Gene[]): Entity => {
+  const entity = new Entity(false); // 더미 개체 생성
+  entity.genome = ch1.map((c, i) => [c, ch2[i]]); // 두 염색분체의 정보 합치기
+
+  return entity;
+};
+
+export const randomReproduce = (ch1: Gene[], male: boolean) => {
+  // 임의의 생식세포 형성
+  const ch2: Gene[] = [];
+  for (let i = 0; i < 5; i++) ch2.push(getRandomGene());
+
+  if (male) ch2.push(1);
+  else ch2.push(Math.random() > 0.5 ? (1 as Gene) : (0 as Gene));
+
   const entity = new Entity(false); // 더미 개체 생성
   entity.genome = ch1.map((c, i) => [c, ch2[i]]); // 두 염색분체의 정보 합치기
 
