@@ -1,4 +1,4 @@
-import { Entity, reproduce } from "./Entity";
+import { Entity, lables, reproduce } from "./Entity";
 
 const dad = new Entity(true); // 남
 const mom = new Entity(false); // 여
@@ -37,7 +37,7 @@ console.log();
 console.log();
 console.log("최종 개체수 : " + entities.length);
 console.log(
-  "남/여 = " +
+  "성비(남/여) = " +
     Math.round(
       (entities.filter((e) => e.genome[5].includes(0)).length /
         entities.filter((e) => !e.genome[5].includes(0)).length) *
@@ -45,3 +45,16 @@ console.log(
     ) /
       100
 );
+
+for (let i = 0; i < 5; i++) {
+  console.log(
+    lables[i][0] +
+      "우성 비율 : " +
+      Math.round(
+        (entities.map((v) => v.genome[i].includes(0)).filter((v) => v).length /
+          entities.length) *
+          100
+      ) /
+        100
+  );
+}
