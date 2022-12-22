@@ -22,7 +22,7 @@ const getRandomReprod = () => {
   return reproduce(male, female);
 };
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 12; i++) {
   // 10 번 반복
   // n번째 반복 => 2 ^ (n-1) 번 번식
   const babies: Entity[] = []; // 새로 태어날 아기들
@@ -65,7 +65,7 @@ for (let i = 0; i < 5; i++) {
 
 entities = [dad, mom];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 12; i++) {
   // 10 번 반복
   // n번째 반복 => 2 ^ (n-1) 번 번식
   const babies: Entity[] = []; // 새로 태어날 아기들
