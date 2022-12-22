@@ -46,8 +46,8 @@ export class Entity {
     this.genome.forEach((g, i) => {
       if (i != 5) result += `${lables[i][g[0]]}${lables[i][g[1]]} `;
       else
-        result += ` ${lables[i][g[0]]}${lables[i][g[1]]}(${
-          g.includes(0) ? "남" : "여"
+        result += ` ${lables[i][g[0]]}${lables[i][g[1]]} (${
+          g.includes(0) ? " 남" : " 여"
         }) `;
     });
 

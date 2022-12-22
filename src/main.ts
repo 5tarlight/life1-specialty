@@ -15,7 +15,7 @@ const getRandomReprod = () => {
     .sort(() => 0.5 - Math.random())[0]
     .getReprodCell();
   const female = entities
-    .filter((e) => !e.genome[5].includes(0)) // 랜덤한 남자의 생식세포
+    .filter((e) => !e.genome[5].includes(0)) // 랜덤한 여자의 생식세포
     .sort(() => 0.5 - Math.random())[0]
     .getReprodCell();
 
