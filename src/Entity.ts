@@ -23,7 +23,7 @@ const getRandomGene = (): Gene => {
 export class Entity {
   public genome: HomoChrosomes[]; // 유전체
 
-  // 상염색체 5개 + 성염색체 (2n = 6) 염색체 생성
+  // 상염색체 5개 + 성염색체 (2n = 12) 염색체 생성
   // male: 수컷인가? (True or False)
   constructor(male: boolean) {
     this.genome = [];
