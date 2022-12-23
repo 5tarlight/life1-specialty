@@ -1,3 +1,4 @@
+import { writeFile, writeFileSync } from "fs";
 import { Entity, lables, randomReproduce, reproduce } from "./Entity";
 
 const dad = new Entity(true); // 남
@@ -61,6 +62,11 @@ for (let i = 0; i < 5; i++) {
   );
 }
 
+writeFileSync(
+  "./data/data1.json",
+  JSON.stringify(entities.map((v) => v.genome))
+);
+
 //###########################################################
 
 entities = [dad, mom];
@@ -106,3 +112,8 @@ for (let i = 0; i < 5; i++) {
     lables[i][0] + lables[i][1] + "\t우성: 열성 = " + sup + " : " + inf
   );
 }
+
+writeFileSync(
+  "./data/data2.json",
+  JSON.stringify(entities.map((v) => v.genome))
+);
